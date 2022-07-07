@@ -1,1 +1,1 @@
-# heroku_flask_app_covid
+# heroku_flask_app
