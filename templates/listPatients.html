@@ -130,8 +130,8 @@
                     {% endif %}
                 </div>
                 <div class="w3-col m10 w3-container">
-                    <h4> {{patient.first_name +" "+patient.last_name}} <span class="w3-opacity w3-medium">Sep 29, 2014,
-                            9:12 PM</span></h4>
+                    <h4> {{patient.first_name +" "+patient.last_name}} 
+                        <span class="w3-opacity w3-medium">{{pats['date']}}</span></h4>
                     <p>Gender: {% if patient.gender==0 %} Female {% else %} Male {% endif %}</p><br>
                 </div>
             </div>
@@ -173,21 +173,24 @@
                             <label>Obesity: </label><br>
                             <label>Hypertension: </label><br>
                             <label>Immunosuppressant: </label><br>
-                            <label>Closed Contact Covid-19: </label><br>
-
+                            {% if patient.gender==0 %}
+                            <label id="labelPregnant">Pregnant: </label><br>
+                            {% endif %}
                         </td>
                         <td>
-                            <label> {{patient.pneumonia}} </label><br>
-                            <label> {{patient.diabetes}} </label><br>
-                            <label> {{patient.obesity}} </label><br>
-                            <label> {{patient.hypertension}} </label><br>
-                            <label> {{patient.immunosup}} </label><br>
-                            <label> {{patient.closed_contanct}} </label><br>
-
+                            <label> {{ 'Positive' if patient.pneumonia==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.diabetes==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.obesity==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.hypertension==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.immunosup==1 else 'Negative' }} </label><br>
+                            {% if patient.gender==0 %}
+                            <label id="labelPregnant2"> {{ 'Positive' if patient.pregnant==1 else 'Negative' }} </label><br>
+                            {% endif %}
 
                         </td>
 
                         <td>
+                      
                             <label>Asthma: </label><br>
                             <label>Cardiovascular: </label><br>
                             <label> COPD </label> <br>
@@ -198,15 +201,40 @@
 
                         </td>
                         <td>
-                            <label> {{patient.asthma}} </label><br>
-                            <label> {{patient.cardiovascular}} </label><br>
-                            <label> {{patient.copd}} </label><br>
-                            <label> {{patient.renal_chronic}} </label><br>
-                            <label> {{patient.tobacco}} </label><br>
-                            <label> {{patient.another_complication}} </label><br>
+                 
+                            <label> {{ 'Positive' if patient.asthma==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.cardiovascular==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.copd==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.renal_chronic==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.tobacco==1 else 'Negative' }} </label><br>
+                            <label> {{ 'Positive' if patient.another_complication==1 else 'Negative' }} </label><br>
+
+     
 
                         </td>
                     </tr>
+                </table>
+                <hr>
+            </div>
+            <div class="w3-container">
+                <h5 class="w3-opacity"><b>Other details</b></h5>
+
+                <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+                    <tr></tr>
+                    <tr>
+                        <td>
+
+                            <label>Closed Contact Covid-19: </label><br>
+
+                        </td>
+                        <td>
+                      
+                            <label> {{ 'Positive' if patient.closed_contanct==1 else 'Negative' }} </label><br>
+
+
+                        </td>
+                        </tr>
+
                 </table>
                 <hr>
             </div>
@@ -265,3 +293,4 @@
         background-color: rgba(0, 0, 0, 0.33) !important
     }
 </style>
+

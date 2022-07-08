@@ -150,6 +150,7 @@ def view(id):
         patients = Patient.query.all()
         patient = Patient.query.get(id)
         pats = {}
+        pats['date'] =dt.datetime.now().strftime("%B %d, %Y")
         for pat in patients:
             X_test = [[pat.gender,pat.pneumonia,pat.pregnant,pat.diabetes,pat.copd,pat.asthma,pat.immunosup,
             pat.hypertension,pat.cardiovascular,pat.obesity,pat.renal_chronic,pat.tobacco,pat.closed_contanct,
