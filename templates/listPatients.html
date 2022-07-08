@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>W3.CSS Template</title>
+    <title>COVID Research</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -132,7 +132,7 @@
                 <div class="w3-col m10 w3-container">
                     <h4> {{patient.first_name +" "+patient.last_name}} 
                         <span class="w3-opacity w3-medium">{{pats['date']}}</span></h4>
-                    <p>Gender: {% if patient.gender==0 %} Female {% else %} Male {% endif %}</p><br>
+                    <p>Gender: {{ 'Female' if patient.gender==0 else 'Male' }}</p><br>
                 </div>
             </div>
 
@@ -142,8 +142,7 @@
         <div class="w3-container w3-card w3-white">
             <h4 class="w3-text-grey w3-padding-16"><i
                     class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
-                Risk:{% if pats[patient.id].predicted==1 %} Positive {% else %} Negative {% endif
-                %}{{pats[patient.id].predicted}}</h4>
+                Risk:{{ 'Positive' if pats[patient.id].predicted==1 else 'Negative' }}</h4>
             <div class="w3-container">
                 <h5 class="w3-opacity"><b>Personal Information</b></h5>
 
