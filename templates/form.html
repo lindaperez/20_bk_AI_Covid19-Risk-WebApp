@@ -75,7 +75,7 @@
 
                 <table class="w3-table w3-striped w3-bordered w3-border w3-white">
                     <h5>Please introduce the patient's profile:</h5>
-                    <form method="POST" action="/register" role="form" , name="registerform">
+                    <form method="POST" action="/register" role="form" , name="registerform"  onsubmit="return validateForm()" >
                         <tr>
                             <td>
                                 <label for="inputGender"> First Name: </label>
@@ -118,18 +118,18 @@
                             </td>
                             <td>
                                 <input class="form-control" type="date" id="inputAge" name="patientAge"
-                                    placeholder="Birth date" value="1932-01-01" min="1931-01-01" max="2022-07-05"><br>
+                                    placeholder="Birth date" value="1899-09-09" min="1910-01-01" ><br>
                             </td>
                             <td>
                                 <label for="inputCovidcl"> Final class:</label>
                             </td>
                             <td>
-                                <select name="patientCovidcl" id="selectCovidcl">
+                                <select disabled name="patientCovidcl" id="selectCovidcl">
                                     <option value="">select the option:</option>
                                     <option value="1">COVID-19 CONFIRMED BY EPIDEMIOLOGICAL CLINICAL ASSOCIATION
                                     </option>
                                     <option value="2">COVID-19 CONFIRMED BY JUDGMENT COMMITTEE</option>
-                                    <option value="3">SARS-COV-2 CASE CONFIRMED</option>
+                                    <option selected value="3">SARS-COV-2 CASE CONFIRMED</option>
                                 </select>
                             </td>
                         </tr>
@@ -190,7 +190,7 @@
                            
                                 <input type="checkbox" id="inputClosedContact" name="patientClosedContact" value="0">
                            
-                                <label for="inputClosedContact"> Closed Contanct</label><br>
+                                <label for="inputClosedContact"> Closed Contact</label><br>
                             </td>
 
                         </tr>
@@ -240,3 +240,32 @@
     width: 190px;
 }
 </style>
+
+
+<script>
+function validateForm() {
+    let patientFirstName = document.forms["registerform"]["patientFirstName"].value;
+    let patientLastName = document.forms["registerform"]["patientLastName"].value;
+    let birthdate = document.forms["registerform"]["patientAge"].value;
+    let gender = document.forms["registerform"]["patientGender"].value;
+    if (patientFirstName.trim() == "") {
+        alert("Patient's first name should no be empty");
+        return false;
+    }
+    if (patientLastName.trim() == "") {
+        alert("Patient's last name should no be empty");
+        return false;
+    }
+    if (birthdate.trim() == "1899-09-09") {
+        alert("Patient's birth date should no be empty");
+        return false;
+    }
+    if (gender.trim() == -1) {
+        alert("Patient's gender should no be empty");
+        return false;
+    }
+    
+
+} 
+
+    </script>

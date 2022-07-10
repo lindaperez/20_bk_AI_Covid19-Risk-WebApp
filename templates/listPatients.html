@@ -108,7 +108,7 @@
             <h5>Patient Details:</h5>
             <div class="w3-row">
                 <div class="w3-col m2 text-center">
-                    {% if patient.gender ==0 %}
+                    {% if patient.gender ==1 %}
                     <img class="w3-circle" src="/static/images/avatar5.png" style="width:96px;height:96px">
                     {% else: %}
                     <img class="w3-circle" src="/static/images/avatar3.png" style="width:96px;height:96px">
@@ -117,7 +117,7 @@
                 <div class="w3-col m10 w3-container">
                     <h4> {{patient.first_name +" "+patient.last_name}} 
                         <span class="w3-opacity w3-medium">{{pats['date']}}</span></h4>
-                    <p>Gender: {{ 'Female' if patient.gender==0 else 'Male' }}</p><br>
+                    <p>Gender:  {{ 'Female' if patient.gender==1 else 'Male' }}</p><br>
                 </div>
             </div>
 
@@ -135,11 +135,20 @@
                     <tr></tr>
                     <tr>
 
-                        <td>Age: <b>{{pats[patient.id].ageValue}}<b></td>
-                        <td>Age Category: <b>{{ pats[patient.id]['ageCategory'] }}</b></td>
-                        <td>Date of Birth: <b> {{patient.age}}<b></td>
+                        <td>Age:</td>
+                        <td>{{pats[patient.id].ageValue}}</td>
+                    </tr>  
+                    <tr>
+                        <td>Age Category: <b></td>
+                        <td>{{ pats[patient.id]['ageCategory'] }}</b></td>
+                        
                     </tr>
-
+                    <tr>
+                    <td>Date of Birth: <b></td> <td>{{patient.age}}<b></td>
+                    </tr>
+                    <tr>
+                        <td>Gender: <b></td> <td>{{'Female' if patient.gender==1 else 'Male'}}<b></td>
+                        </tr>
                 </table>
                 <hr>
             </div>
@@ -208,7 +217,7 @@
                     <tr>
                         <td>
 
-                            <label>Closed Contact Covid-19: </label><br>
+                            <label>Closed Contact: </label><br>
 
                         </td>
                         <td>
