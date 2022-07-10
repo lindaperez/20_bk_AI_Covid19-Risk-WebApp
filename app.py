@@ -127,9 +127,6 @@ def register():
 def list():
     if request.method == "GET":
         patients = Patient.query.all()
-        filename = 'balanced_random_forest50.pkl'
-        #loaded_model = pickle.load(open(filename, 'rb'))
-        from numpy import genfromtxt
         pats = {}
         for pat in patients:
             # print(pat.id,pat.first_name,pat.last_name,pat.gender,pat.age)
@@ -151,7 +148,13 @@ def view(id):
         patient = Patient.query.get(id)
         pats = {}
         pats['date'] =dt.datetime.now().strftime("%B %d, %Y")
-        for pat in patients:
+        for pat in patients:        
+            #loaded_model = pickle.load(open(filename, 'rb'))
+            #predicted = loaded_model.predict(X_test)
+            #print('RESULLLLT',predicted)
+            pats[pat.id]={'ageValue':calculateAge( pat.age),
+           'ageCategory':calculateAgeCategory(calculateAge( pat.age)),           
+            'covidcl': genCovidcl(pat.covidcl) }
             X_test = [[pat.gender,pat.pneumonia,pat.pregnant,pat.diabetes,pat.copd,pat.asthma,pat.immunosup,
             pat.hypertension,pat.cardiovascular,pat.obesity,pat.renal_chronic,pat.tobacco,pat.closed_contanct,
             pat.another_complication,calculateNumberCategory(calculateAge(pat.age))]]
@@ -161,23 +164,22 @@ def view(id):
             'hypertension',pat.hypertension,'cardiovascular',pat.cardiovascular,'obesity',pat.obesity,
             'renal_chronic',pat.renal_chronic,'tobacco',pat.tobacco,'closed_contanct',pat.closed_contanct)
             filename = "balanced_random_forest50.pkl"
+
             ##b = [[1 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,4]]
             with gzip.open(filename,'rb') as f:
                 p  = pickle.Unpickler(f)
                 brf_pkl = p.load()
                 predicted = brf_pkl.predict(X_test)
-       
-            #loaded_model = pickle.load(open(filename, 'rb'))
-            #predicted = loaded_model.predict(X_test)
-            #print('RESULLLLT',predicted)
-            pats[pat.id]={'ageValue':calculateAge( pat.age),
-           'ageCategory':calculateAgeCategory(calculateAge( pat.age)),
-           'predicted':predicted,
-            'covidcl': genCovidcl(pat.covidcl) }
+            pats[pat.id]['predicted'] = predicted
 
         return render_template("listPatients.html", patient=patient,patients=patients,pats=pats)
 
     return redirect("/list",patient=patient)
+
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("gen_dashboard.html")
 
 # @app.route('/predict', methods=['GET','POST'])
 # def predict():
