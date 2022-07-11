@@ -145,13 +145,13 @@ def list():
 def view(id):
     if request.method == "GET":
         patients = Patient.query.all()
-        patient = Patient.query.get(id)
+        pat = Patient.query.get(id)
         pats = {}
         pats['date'] =dt.datetime.now().strftime("%B %d, %Y")
-        for pat in patients:        
-            pats[pat.id]={'ageValue':calculateAge( pat.age),
-           'ageCategory':calculateAgeCategory(calculateAge( pat.age)),           
-            'covidcl': genCovidcl(pat.covidcl) }
+        for patient in patients:        
+            pats[patient.id]={'ageValue':calculateAge( patient.age),
+           'ageCategory':calculateAgeCategory(calculateAge( patient.age)),           
+            'covidcl': genCovidcl(patient.covidcl) }
             
  
         print('gender',pat.gender,'pneumonia',pat.pneumonia, 'pregnant',pat.pregnant,
@@ -167,11 +167,11 @@ def view(id):
             p  = pickle.Unpickler(f)
             brf_pkl = p.load()
             predicted = brf_pkl.predict(X_test)
-        pats[id]['predicted'] = predicted
-        print('PAT ID',pat.id)
-        return render_template("listPatients.html", patient=patient,patients=patients,pats=pats)
+        
+        pats[pat.id]['predicted'] = predicted
+        return render_template("listPatients.html", patient=pat,patients=patients,pats=pats)
 
-    return redirect("/list",patient=patient)
+    return redirect("/list",patient=pat)
 
 
 @app.route("/dashboard")
