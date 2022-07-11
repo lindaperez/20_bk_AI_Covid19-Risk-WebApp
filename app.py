@@ -168,7 +168,7 @@ def view(id):
             brf_pkl = p.load()
             predicted = brf_pkl.predict(X_test)
         pats[pat.id]['predicted'] = predicted
-
+        print('PAT ID',pat.id)
         return render_template("listPatients.html", patient=patient,patients=patients,pats=pats)
 
     return redirect("/list",patient=patient)

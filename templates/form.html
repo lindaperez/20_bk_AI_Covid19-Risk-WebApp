@@ -121,24 +121,31 @@
                                     placeholder="Birth date" value="1899-09-09" min="1910-01-01" ><br>
                             </td>
                             <td>
-                                <label for="inputCovidcl"> Final class:</label>
+                                <label for="inputCovidcl"> Covid-19</label>
                             </td>
                             <td>
                                 <select disabled name="patientCovidcl" id="selectCovidcl">
                                     <option value="">select the option:</option>
                                     <option value="1">COVID-19 CONFIRMED BY EPIDEMIOLOGICAL CLINICAL ASSOCIATION
                                     </option>
-                                    <option value="2">COVID-19 CONFIRMED BY JUDGMENT COMMITTEE</option>
-                                    <option selected value="3">SARS-COV-2 CASE CONFIRMED</option>
+                                    <option  selected value="2">COVID-19 CONFIRMED BY JUDGMENT COMMITTEE</option>
+                                    <option value="3">SARS-COV-2 CASE CONFIRMED</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <label> Medical conditions:</label><br><br>
-                            
+                                <label for="inputPneumonia"> Pneumonia </label><br>
+                                <label for="inputDiabetes"> Diabetes </label><br>
+                                <label for="inputObesity"> Obesity </label><br>
+                                <label for="inputHypertension"> Hypertension </label><br>
+                                <label for="inputImmunosup"> Immunosup </label><br>
                                 <!-- <input type="checkbox" id="inputIntubated" name="patientIntubated">
                                                             <label for="inputIntubated"> Intubated </label><br> -->
+                               
+                            </td>
+                            <td><br><br>
                                 <input type="checkbox" id="inputPneumonia" name="patientPneumonia" value="0"><br>
                             
                                 <input type="checkbox" id="inputDiabetes" name="patientDiabetes" value="0"><br>
@@ -150,14 +157,17 @@
                                 <input type="checkbox" id="inputImmunosup" name="patientImmunosup" value="0"><br>
                             
                             </td>
-                            <td><br><br>
-                                <label for="inputPneumonia"> Pneumonia </label><br>
-                                <label for="inputDiabetes"> Diabetes </label><br>
-                                <label for="inputObesity"> Obesity </label><br>
-                                <label for="inputHypertension"> Hypertension </label><br>
-                                <label for="inputImmunosup"> Immunosup </label><br>
-                            </td>
                            
+                            <td><br><br>
+                                <label for="inputAsthma"> Asthma </label><br>
+                                <label for="inputCardiovascular"> Cardiovascular </label><br>
+                                <label for="inputCopd"> COPD </label><br>
+                                <label for="inputRenalChronic"> Renal Chronic </label><br>
+                                <label for="inputTobacco"> Tobacco </label><br>
+                                <label for="inputAnother"> Other Complication</label><br><br>
+                                <!-- <input type="checkbox" id="inputICU" name="patientICU" value="0">
+                                <label for="inputICU"> ICU </label><br> -->
+                            </td>
                             <td><br><br>
                                 <input type="checkbox" id="inputAsthma" name="patientAsthma" value="0"><br>
                                
@@ -171,16 +181,7 @@
                               
                                 <input type="checkbox" id="inputAnother" name="patientAnother" value="0"><br>
                                 
-                                <!-- <input type="checkbox" id="inputICU" name="patientICU" value="0">
-                                <label for="inputICU"> ICU </label><br> -->
-                            </td>
-                            <td><br><br>
-                                <label for="inputAsthma"> Asthma </label><br>
-                                <label for="inputCardiovascular"> Cardiovascular </label><br>
-                                <label for="inputCopd"> COPD </label><br>
-                                <label for="inputRenalChronic"> Renal Chronic </label><br>
-                                <label for="inputTobacco"> Tobacco </label><br>
-                                <label for="inputAnother"> Other Complication</label><br><br>
+                            
                             </td>
                          
                         </tr>

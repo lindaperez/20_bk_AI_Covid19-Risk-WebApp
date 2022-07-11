@@ -81,7 +81,7 @@
 
                 <th>Final Class</th>
 
-                <th>Accions</th>
+                <th>Actions</th>
                 {% for pat in patients %}
                 <tr>
                     <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
@@ -127,7 +127,7 @@
         <div class="w3-container w3-card w3-white">
             <h4 class="w3-text-grey w3-padding-16"><i
                     class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
-                Risk: {{ pats[patient.id].predicted}} {{ 'Positive' if pats[patient.id].predicted==1 else 'Negative' }}</h4>
+                Risk: {{ pats[patient.id].predicted}} {{ 'Positive' if pats[patient.id].predicted[0]==1 else 'Negative' }}</h4>
             <div class="w3-container">
                 <h5 class="w3-opacity"><b>Personal Information</b></h5>
 
