@@ -261,6 +261,10 @@ function validateForm() {
         alert("Patient's birth date should no be empty");
         return false;
     }
+    if (birthdate.trim().length != 10) {
+        alert("Patient's birth date has a wrong format");
+        return false;
+    }
     if (gender.trim() == -1) {
         alert("Patient's gender should no be empty");
         return false;
