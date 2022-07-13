@@ -230,15 +230,38 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
 
-<script src="../static/js/genderselect.js"></script>
+<script>
+var tbody = d3.select("tbody");
+
+function updatePregnancy() {
+    var sel = document.getElementById('selectGender');
+    value = sel.options[sel.selectedIndex].value;
+
+    if (value == '0' && value != null && value != undefined) {
+        d3.select('#inputPregnant').property('style', "display:none")
+        d3.select('#labelPregnant').property('style', "display:none")
+    }
+    if (value == '1' || value == 1) {
+        console.log(sel.options[sel.selectedIndex].value)
+        d3.select('#inputPregnant').property('style', "display:on")
+        d3.select('#labelPregnant').property('style', "display:on")
+    }
+
+}
+
+d3.select("#selectGender").on('change', updatePregnancy);
+</script>
 
 <style>
 #selectGender {
-        width: 190px;
+        width: 165px;
 
     }
 #selectCovidcl{
-    width: 190px;
+    width: 165px;
+}
+#inputAge{
+    width: 165px;
 }
 </style>
 

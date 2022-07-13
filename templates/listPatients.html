@@ -166,7 +166,7 @@
                             <label>Obesity: </label><br>
                             <label>Hypertension: </label><br>
                             <label>Immunosuppressant: </label><br>
-                            {% if patient.gender==0 %}
+                            {% if patient.gender==1 %}
                             <label id="labelPregnant">Pregnant: </label><br>
                             {% endif %}
                         </td>
@@ -176,7 +176,7 @@
                             <label> {{ 'Positive' if patient.obesity==1 else 'Negative' }} </label><br>
                             <label> {{ 'Positive' if patient.hypertension==1 else 'Negative' }} </label><br>
                             <label> {{ 'Positive' if patient.immunosup==1 else 'Negative' }} </label><br>
-                            {% if patient.gender==0 %}
+                            {% if patient.gender==1 %}
                             <label id="labelPregnant2"> {{ 'Positive' if patient.pregnant==1 else 'Negative' }} </label><br>
                             {% endif %}
 

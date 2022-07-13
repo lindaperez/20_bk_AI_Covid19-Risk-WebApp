@@ -1,6 +1,7 @@
 # import necessary libraries
 from datetime import date
 from models import create_classes
+
 import os
 from flask import (
     Flask,
@@ -162,13 +163,14 @@ def view(id):
         X_test = [[pat.gender,pat.pneumonia,pat.pregnant,pat.diabetes,pat.copd,pat.asthma,pat.immunosup,
             pat.hypertension,pat.cardiovascular,pat.obesity,pat.renal_chronic,pat.tobacco,pat.closed_contanct,
             pat.another_complication,calculateNumberCategory(calculateAge(pat.age))]]
-        print(X_test)
+        #print(X_test)
         with gzip.open(filename,'rb') as f:
             p  = pickle.Unpickler(f)
             brf_pkl = p.load()
             predicted = brf_pkl.predict(X_test)
         
         pats[pat.id]['predicted'] = predicted
+        #print(predicted)
         return render_template("listPatients.html", patient=pat,patients=patients,pats=pats)
 
     return redirect("/list",patient=pat)
