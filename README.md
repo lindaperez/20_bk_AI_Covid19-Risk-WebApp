@@ -2,7 +2,7 @@
 
 
 - Current Deployment: https://lperez-covid-deployment.herokuapp.com/register
-- How to Deploy? https://github.com/lindaperez/bk-covid19/blob/lperez_deployment/Deployment.md
+- How to Deploy? https://github.com/lindaperez/heroku_flask_app_covid/blob/main/Deployment.md
 
 ## Use Cases:
 
